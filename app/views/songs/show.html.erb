@@ -1,0 +1,4 @@
+<h1>One Song</h1>
+<h2>Title: <%= @song.title.titlecase %></h2>
+
+<p>Created by: <%= link_to @song.artist_name, artist_path(@song.artist) if @song.artist %></p>

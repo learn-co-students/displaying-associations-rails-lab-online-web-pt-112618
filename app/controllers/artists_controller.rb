@@ -1,8 +1,13 @@
 class ArtistsController < ApplicationController
+  before_action :set_artist!, only: [:show, :create, :edit, :update, :destroy]
+
   def index
+    @artists = Artist.all
   end
 
   def show
+    set_artist!
+
   end
 
   def new
@@ -13,6 +18,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
 
     if @artist.save
+      binding.pry
       redirect_to @artist
     else
       render :new
@@ -47,4 +53,9 @@ class ArtistsController < ApplicationController
   def artist_params
     params.require(:artist).permit(:name)
   end
+
+  def set_artist!
+    @artist = Artist.find_by(id: params[:id])
+  end
+
 end
