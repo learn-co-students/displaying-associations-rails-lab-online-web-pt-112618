@@ -1,0 +1,5 @@
+<h1>All Songs</h1>
+<% @songs.each do |song| %>
+  <p><%= song.title %></p>
+  <%= link_to [song.artist.name, song.title].map {|w| w.titlecase}.join(" - "), song_path(song) %>
+<% end %>
